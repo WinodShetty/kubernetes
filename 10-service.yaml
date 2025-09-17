@@ -1,0 +1,22 @@
+kind: service
+apiVersion: v1
+metadata:
+  name: nginx
+spec: 
+  selector:
+    project: expense
+    environment: dev
+
+
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: service
+  labels:
+    project: expense
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  
