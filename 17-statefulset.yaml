@@ -31,7 +31,7 @@ spec:
         app: nginx
         demo: statefulset # has to match .spec.selector.matchLabels
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 15
       containers:
       - name: nginx
         image: registry.k8s.io/nginx-slim:0.24
