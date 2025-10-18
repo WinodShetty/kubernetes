@@ -51,4 +51,5 @@ spec:
       containers:
       - name: nginx
         image: nginx:stable    
-
+      - name: nginx
+        image: nginx  
