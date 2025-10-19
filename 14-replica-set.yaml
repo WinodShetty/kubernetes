@@ -53,3 +53,9 @@ spec:
         image: nginx:stable    
       - name: nginx
         image: nginx  
+      - name: nginx
+        image: nginx  
+      - name: nginx
+        image: nginx  
+      - name: nginx
+        image: nginx        
