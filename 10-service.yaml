@@ -21,3 +21,7 @@ spec:
     image: nginx
   - name: nginx
     image: nginx
+  - name: nginx
+    image: nginx
+  - name: nginx
+    image: nginx  
