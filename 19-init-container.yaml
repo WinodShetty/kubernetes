@@ -8,6 +8,8 @@ spec:
   containers:
   - name: nginx
     image: nginx
+  - name: nginx
+    image: nginx
   initContainers:
   - name: init-myservice
     image: busybox:1.28
