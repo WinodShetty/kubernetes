@@ -25,3 +25,28 @@ roleRef:
   kind: Role #this must be Role or ClusterRole
   name: sa-secret-reader # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sa-demo
+  namespace: expense
+spec:
+  # one pod can contain multiple containers
+  serviceAccount: expense-mysql-secret
+  initContainers:
+  - name: awscli
+    image: amazon/aws-cli
+    command:  ['sh', '-c', 'aws secretsmanager get-secret-value --secret-id expense/mysql/creds --query SecretString --output text > /secrets/.env ']
+    volumeMounts:
+    - mountPath: /secrets
+      name: secret-volume
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - mountPath: /secrets
+      name: secret-volume
+  volumes:
+  - name: secret-volume
+    emptyDir: {}
